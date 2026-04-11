@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { Briefcase, Clock, Users, CheckCircle, ExternalLink, Star } from 'lucide-react';
+import { Briefcase, Plug, MessageSquare, CheckCircle, ExternalLink, ArrowRight } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -22,40 +22,51 @@ const Freelance = () => {
         ease: 'power3.out',
       });
 
-      gsap.from('.freelance-intro', {
+      gsap.from('.freelance-main-card', {
         scrollTrigger: {
-          trigger: '.freelance-intro',
-          start: 'top 75%',
-          toggleActions: 'play none none reverse',
-        },
-        opacity: 0,
-        y: 30,
-        duration: 0.8,
-        ease: 'power3.out',
-      });
-
-      gsap.from('.freelance-card', {
-        scrollTrigger: {
-          trigger: '.freelance-grid',
+          trigger: '.freelance-main-card',
           start: 'top 75%',
           toggleActions: 'play none none reverse',
         },
         opacity: 0,
         y: 50,
-        stagger: 0.15,
-        duration: 0.7,
+        duration: 0.8,
         ease: 'power3.out',
       });
 
-      gsap.from('.service-item', {
+      gsap.from('.value-card', {
         scrollTrigger: {
-          trigger: '.services-grid',
+          trigger: '.value-grid',
           start: 'top 80%',
           toggleActions: 'play none none reverse',
         },
         opacity: 0,
-        x: -30,
+        y: 30,
         stagger: 0.1,
+        duration: 0.6,
+        ease: 'power3.out',
+      });
+
+      gsap.from('.featured-build', {
+        scrollTrigger: {
+          trigger: '.featured-build',
+          start: 'top 85%',
+          toggleActions: 'play none none reverse',
+        },
+        opacity: 0,
+        y: 40,
+        duration: 0.7,
+        ease: 'power3.out',
+      });
+
+      gsap.from('.bottom-cta', {
+        scrollTrigger: {
+          trigger: '.bottom-cta',
+          start: 'top 90%',
+          toggleActions: 'play none none reverse',
+        },
+        opacity: 0,
+        y: 30,
         duration: 0.6,
         ease: 'power3.out',
       });
@@ -64,56 +75,26 @@ const Freelance = () => {
     return () => ctx.revert();
   }, []);
 
-  const freelanceProjects = [
-    {
-      title: 'E-Commerce Platform Development',
-      client: 'Local Retail Business',
-      duration: '3 weeks',
-      description: 'Built a full-featured e-commerce platform with product management, shopping cart, and secure payment integration using Stripe.',
-      technologies: ['React', 'Node.js', 'MongoDB', 'Stripe'],
-      status: 'Completed',
-      highlights: ['Payment integration', 'Admin dashboard', 'Inventory management'],
-    },
-    {
-      title: 'ERP Integration Solution',
-      client: 'Small Manufacturing Company',
-      duration: '2 weeks',
-      description: 'Developed custom modules to integrate existing ERP systems with modern web applications for better data flow.',
-      technologies: ['Node.js', 'GraphQL', 'PostgreSQL'],
-      status: 'Completed',
-      highlights: ['Data synchronization', 'API development', 'Reporting module'],
-    },
-    {
-      title: 'Web Application UI/UX Redesign',
-      client: 'Tech Startup',
-      duration: '1 week',
-      description: 'Redesigned and implemented modern, responsive UI components improving user engagement by 40%.',
-      technologies: ['React', 'Tailwind CSS', 'Figma'],
-      status: 'Completed',
-      highlights: ['Responsive design', 'Component library', 'Performance optimization'],
-    },
-  ];
-
-  const services = [
+  const valueCards = [
     {
       icon: Briefcase,
-      title: 'Full Stack Development',
-      description: 'End-to-end web application development with modern technologies',
+      title: 'Full-stack delivery',
+      description: 'End-to-end web apps with coherent architecture—frontend UX, backend APIs, and the glue that keeps them reliable.',
     },
     {
-      icon: Clock,
-      title: 'Quick Turnaround',
-      description: 'Fast delivery without compromising on quality',
+      icon: Plug,
+      title: 'Integrations that don\'t fall over',
+      description: 'OAuth, REST APIs, webhooks, background work—built with rate limits, retries, and observability in mind.',
     },
     {
-      icon: Users,
-      title: 'Direct Communication',
-      description: 'Clear and transparent communication throughout the project',
+      icon: MessageSquare,
+      title: 'Fast, direct collaboration',
+      description: 'Written updates, tight feedback loops, and decisions documented so stakeholders aren\'t guessing what shipped.',
     },
     {
       icon: CheckCircle,
-      title: 'Quality Assurance',
-      description: 'Thorough testing and code review for robust solutions',
+      title: 'Production mindset',
+      description: 'Error handling, security basics, and maintainability—shipping features you can extend without a rewrite.',
     },
   ];
 
@@ -126,32 +107,50 @@ const Freelance = () => {
       {/* Background */}
       <div className="absolute inset-0 animated-grid opacity-20" />
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
+      <div className="w-full px-4 sm:px-6 lg:px-8 xl:px-12 relative z-10">
         {/* Section Header */}
-        <div className="freelance-header text-center mb-16">
-          <span className="section-tag mb-4">freelance</span>
+        <div className="freelance-header text-center mb-12">
+          <span className="section-tag mb-4">freelance · product engineering</span>
           <h2 className="text-headline mt-4 mb-6">
             Freelance <span className="gradient-text">Work</span>
           </h2>
-          <p className="text-body text-[#94a3b8] max-w-2xl mx-auto">
-            Taking on select freelance projects to help businesses bring their ideas to life
+          <p className="text-body text-[#94a3b8] max-w-3xl mx-auto">
+            I help teams ship production web products—clear scope, direct communication, and code that's meant to stay online under real API limits and real users.
           </p>
         </div>
 
-        {/* Introduction */}
-        <div className="freelance-intro glass rounded-2xl p-8 mb-16 border border-[rgba(99,102,241,0.1)]">
-          <div className="flex flex-col lg:flex-row items-center gap-8">
-            <div className="flex-1">
-              <h3 className="text-xl font-semibold text-white mb-4">Available for Freelance Projects</h3>
-              <p className="text-[#94a3b8] leading-relaxed mb-6">
-                I take on selective freelance projects that align with my expertise. Whether you need 
-                a full-stack web application, API integration, or frontend development, I deliver 
-                high-quality solutions with quick turnaround times.
-              </p>
-              <div className="flex flex-wrap gap-4">
-                <a href="#contact" className="btn-primary text-sm py-2.5 px-5">
-                  <Briefcase size={16} />
-                  <span>Discuss Your Project</span>
+        {/* Main Content Card */}
+        <div className="freelance-main-card glass rounded-3xl p-6 sm:p-8 lg:p-10 border border-[rgba(99,102,241,0.1)] mb-8">
+          <div className="grid xl:grid-cols-2 gap-8 xl:gap-12 2xl:gap-16">
+            {/* Left Column - Available for selective projects */}
+            <div>
+              <h3 className="text-xl font-semibold text-white mb-6">
+                Select freelance & contract work
+              </h3>
+              
+              <div className="space-y-4 text-[#94a3b8] text-[15px] leading-relaxed">
+                <p>
+                  I take on a small number of projects where the outcome matters: customer-facing SaaS, dashboard-heavy products, and integration-heavy backends (auth, third-party APIs, queues, and operational UX). I'm strongest when the work sits between product design and systems thinking—not just pages, but flows that have to work tomorrow.
+                </p>
+                
+                <p>
+                  <span className="text-white font-medium">Proof in production:</span> I'm the builder behind <span className="text-white font-medium">SiteGrip</span>, an AI visibility and programmatic indexing platform used to push URLs through Google Search Console–aligned pipelines, Bing, scheduling, and quota-aware job dispatch—with a full operator dashboard for submissions, activity, and health signals. That's the level of depth I bring to client work: end-to-end ownership from API behavior to the UI that makes it understandable.
+                </p>
+                
+                <p className="text-sm">
+                  Typical engagements: MVP → production hardening, new module on an existing app, or API + admin UI for a business that has outgrown spreadsheets and manual workflows.
+                </p>
+              </div>
+
+              {/* CTA */}
+              <div className="flex flex-wrap items-center gap-4 mt-8">
+                <a 
+                  href="#contact" 
+                  className="btn-primary group"
+                >
+                  <Briefcase size={18} />
+                  <span>Discuss your project</span>
+                  <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
                 </a>
                 <span className="flex items-center gap-2 text-sm text-[#22c55e]">
                   <span className="relative flex h-2 w-2">
@@ -162,92 +161,87 @@ const Freelance = () => {
                 </span>
               </div>
             </div>
-            
-            {/* Services */}
-            <div className="services-grid grid grid-cols-2 gap-4 lg:w-1/2">
-              {services.map((service, index) => (
+
+            {/* Right Column - 4 Value Cards */}
+            <div className="value-grid grid sm:grid-cols-2 gap-4">
+              {valueCards.map((card, index) => (
                 <div
                   key={index}
-                  className="service-item p-4 rounded-xl glass border border-[rgba(99,102,241,0.1)] hover:border-[rgba(99,102,241,0.3)] transition-all duration-300"
+                  className="value-card p-5 rounded-2xl bg-[rgba(22,22,34,0.5)] border border-[rgba(99,102,241,0.1)] hover:border-[rgba(99,102,241,0.3)] transition-all duration-300 group"
                   style={{ opacity: 1 }}
                 >
-                  <service.icon size={20} className="text-[#6366f1] mb-2" />
-                  <h4 className="text-sm font-medium text-white mb-1">{service.title}</h4>
-                  <p className="text-xs text-[#64748b]">{service.description}</p>
+                  <div className="w-10 h-10 rounded-xl bg-gradient-to-r from-[#6366f1] to-[#06b6d4] flex items-center justify-center text-white mb-4 group-hover:scale-110 transition-transform duration-300">
+                    <card.icon size={20} />
+                  </div>
+                  <h4 className="text-white font-semibold mb-2 text-[15px]">{card.title}</h4>
+                  <p className="text-sm text-[#94a3b8] leading-relaxed">{card.description}</p>
                 </div>
               ))}
             </div>
           </div>
         </div>
 
-        {/* Freelance Projects */}
-        <div className="freelance-grid grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {freelanceProjects.map((project, index) => (
-            <div
-              key={index}
-              className="freelance-card group p-6 rounded-2xl glass border border-[rgba(99,102,241,0.1)] hover:border-[rgba(99,102,241,0.3)] transition-all duration-500 hover:-translate-y-2"
-              style={{ opacity: 1 }}
-            >
-              {/* Header */}
-              <div className="flex items-start justify-between mb-4">
-                <div>
-                  <span className="text-xs text-[#64748b] font-mono">{project.client}</span>
-                  <h3 className="text-lg font-semibold text-white mt-1 group-hover:gradient-text transition-all duration-300">
-                    {project.title}
-                  </h3>
-                </div>
-                <span className="flex items-center gap-1 text-xs text-[#22c55e] bg-[rgba(34,197,94,0.1)] px-2 py-1 rounded-full">
-                  <CheckCircle size={12} />
-                  {project.status}
-                </span>
-              </div>
+        {/* Featured Build Strip */}
+        <div className="featured-build glass rounded-2xl p-6 lg:p-8 border border-[rgba(99,102,241,0.15)]">
+          <div className="flex items-center gap-2 mb-3">
+            <span className="text-xs font-mono text-[#6366f1] uppercase tracking-wider">Featured product</span>
+          </div>
+          
+          <h3 className="text-xl lg:text-2xl font-bold text-white mb-3">
+            SiteGrip — indexing & AI visibility infrastructure
+          </h3>
+          
+          <p className="text-[#94a3b8] text-[15px] leading-relaxed mb-6 max-w-4xl">
+            SiteGrip automates URL indexing across search engines and AI discovery workflows, replacing fragile manual submission with scheduled, queued, policy-aware dispatch and real-time operational UI. It's representative of how I work: treat the API surface and the user surface as one system, not two separate projects.
+          </p>
 
-              {/* Duration */}
-              <div className="flex items-center gap-2 text-sm text-[#94a3b8] mb-4">
-                <Clock size={14} />
-                <span>{project.duration}</span>
-              </div>
+          {/* Bullets */}
+          <ul className="space-y-2 mb-6">
+            {[
+              'Dual-lane indexing (e.g. Google + Bing) with quota- and policy-aware submission logic.',
+              'Operator-grade dashboard: submissions, queues, activity, and clarity under load—not a demo UI.',
+              'Auth + multi-tenant patterns, secure routes, and production deployment considerations baked in.',
+            ].map((bullet, index) => (
+              <li key={index} className="flex items-start gap-3 text-sm text-[#94a3b8]">
+                <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-[#6366f1] shrink-0" />
+                {bullet}
+              </li>
+            ))}
+          </ul>
 
-              {/* Description */}
-              <p className="text-sm text-[#94a3b8] leading-relaxed mb-4">
-                {project.description}
-              </p>
+          {/* Tech Tags */}
+          <div className="flex flex-wrap gap-2 mb-4">
+            {['React', 'Vite', 'Tailwind', 'Node.js', 'TypeScript', 'Firebase', 'Firestore', 'REST', 'WebSockets'].map((tech, index) => (
+              <span
+                key={index}
+                className="px-3 py-1.5 text-xs font-mono rounded-lg bg-[rgba(99,102,241,0.1)] text-[#818cf8] border border-[rgba(99,102,241,0.15)]"
+              >
+                {tech}
+              </span>
+            ))}
+          </div>
 
-              {/* Highlights */}
-              <div className="flex flex-wrap gap-2 mb-4">
-                {project.highlights.map((highlight, idx) => (
-                  <span
-                    key={idx}
-                    className="flex items-center gap-1 text-xs text-[#818cf8]"
-                  >
-                    <Star size={10} />
-                    {highlight}
-                  </span>
-                ))}
-              </div>
-
-              {/* Technologies */}
-              <div className="flex flex-wrap gap-2 pt-4 border-t border-[rgba(99,102,241,0.1)]">
-                {project.technologies.map((tech, idx) => (
-                  <span
-                    key={idx}
-                    className="px-2 py-1 text-xs rounded-md bg-[rgba(99,102,241,0.08)] text-[#94a3b8]"
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-            </div>
-          ))}
+          {/* Micro CTA */}
+          <a 
+            href="#contact" 
+            className="inline-flex items-center gap-2 text-sm text-[#6366f1] hover:text-[#818cf8] transition-colors"
+          >
+            Ask me about architecture & tradeoffs on this build
+            <ExternalLink size={14} />
+          </a>
         </div>
 
-        {/* CTA */}
-        <div className="text-center mt-16">
-          <p className="text-[#64748b] mb-6">
-            Have a project in mind? Let's discuss how I can help bring your vision to life.
+        {/* Bottom CTA */}
+        <div className="bottom-cta text-center mt-12">
+          <p className="text-[#94a3b8] mb-6 max-w-2xl mx-auto">
+            Have a roadmap item that needs a senior IC mindset—not just extra hands?<br />
+            Tell me the problem, the constraints (timeline, APIs, compliance), and the definition of done. I'll reply with a clear scope and how I'd phase it.
           </p>
-          <a href="#contact" className="btn-secondary group">
-            <span>Start a Conversation</span>
+          <a 
+            href="mailto:bbharanidharan43@gmail.com" 
+            className="btn-secondary group"
+          >
+            <span>Start a conversation</span>
             <ExternalLink size={16} className="group-hover:translate-x-1 transition-transform" />
           </a>
         </div>

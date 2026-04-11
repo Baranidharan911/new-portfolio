@@ -27,7 +27,7 @@ const Footer = () => {
       {/* Top Border Gradient */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#6366f1] to-transparent" />
 
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="w-full px-4 sm:px-6 lg:px-8 xl:px-12">
         {/* Main Footer Content */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           {/* Brand */}

@@ -128,7 +128,7 @@ const Skills = () => {
       {/* Background */}
       <div className="absolute inset-0 animated-grid opacity-30" />
       
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
+      <div className="w-full px-4 sm:px-6 lg:px-8 xl:px-12 relative z-10">
         {/* Section Header */}
         <div className="skills-header text-center mb-16">
           <span className="section-tag mb-4">skills</span>
@@ -142,7 +142,7 @@ const Skills = () => {
         </div>
 
         {/* Skills Grid */}
-        <div className="skills-grid grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-20">
+        <div className="skills-grid grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-6 gap-6 mb-20">
           {skillCategories.map((skill, index) => (
             <div
               key={index}

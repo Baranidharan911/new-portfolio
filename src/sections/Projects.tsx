@@ -104,7 +104,7 @@ const Projects = () => {
       {/* Background */}
       <div className="absolute inset-0 animated-grid opacity-20" />
       
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
+      <div className="w-full px-4 sm:px-6 lg:px-8 xl:px-12 relative z-10">
         {/* Section Header */}
         <div className="projects-header text-center mb-16">
           <span className="section-tag mb-4">projects</span>
@@ -118,7 +118,7 @@ const Projects = () => {
         </div>
 
         {/* Projects Grid */}
-        <div className="projects-grid grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="projects-grid grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-3 gap-6 xl:gap-8">
           {projects.map((project, index) => (
             <ProjectCard key={index} project={project} />
           ))}

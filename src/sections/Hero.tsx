@@ -80,7 +80,7 @@ const Hero = () => {
     <section
       ref={heroRef}
       id="hero"
-      className="min-h-screen w-full flex items-center justify-center relative overflow-hidden"
+      className="min-h-screen w-full flex items-center justify-center relative overflow-hidden pt-20"
     >
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
@@ -124,10 +124,10 @@ const Hero = () => {
       {/* Main Content */}
       <div
         ref={contentRef}
-        className="relative z-10 text-center px-6 max-w-6xl mx-auto"
+        className="relative z-10 text-center px-4 sm:px-6 lg:px-8 xl:px-12 w-full pt-20 md:pt-24"
       >
         {/* Availability Badge */}
-        <div className="hero-badge inline-flex items-center gap-3 px-5 py-2.5 rounded-full glass mb-8">
+        <div className="hero-badge inline-flex items-center gap-3 px-5 py-2.5 rounded-full glass mb-8 mt-4">
           <span className="relative flex h-3 w-3">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
             <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
@@ -155,7 +155,7 @@ const Hero = () => {
         </div>
 
         {/* Description */}
-        <p className="hero-description text-body text-[#94a3b8] max-w-2xl mx-auto mb-10 leading-relaxed">
+        <p className="hero-description text-body sm:text-lg lg:text-xl text-[#94a3b8] max-w-3xl xl:max-w-4xl mx-auto mb-10 leading-relaxed px-4">
           A passionate <span className="text-white font-medium">Full Stack Developer</span> with expertise in 
           building enterprise-grade applications. I specialize in React, Node.js, GraphQL, and ERP integrations 
           that drive business growth and operational efficiency.
@@ -211,7 +211,7 @@ const Hero = () => {
       </div>
 
       {/* Side Stats - Desktop Only */}
-      <div className="absolute right-8 top-1/2 -translate-y-1/2 hidden xl:block">
+      <div className="absolute right-8 top-1/2 -translate-y-1/2 hidden xl:block mt-10">
         <div className="flex flex-col gap-6 text-right">
           {[
             { value: '2+', label: 'Years Exp' },

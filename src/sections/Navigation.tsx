@@ -86,10 +86,10 @@ const Navigation = () => {
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           isScrolled
             ? 'py-3 glass-strong'
-            : 'py-6 bg-transparent'
+            : 'py-4 md:py-6 bg-transparent'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
+        <div className="w-full px-4 sm:px-6 lg:px-8 xl:px-12 flex items-center justify-between">
           {/* Logo */}
           <button
             onClick={() => scrollToSection('hero')}
@@ -102,7 +102,7 @@ const Navigation = () => {
           </button>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-1">
+          <div className="hidden xl:flex items-center gap-1">
             {navItems.map((item) => (
               <button
                 key={item.id}
@@ -125,7 +125,7 @@ const Navigation = () => {
           {/* CTA Button - Desktop */}
           <button
             onClick={() => scrollToSection('contact')}
-            className="hidden lg:flex btn-primary text-sm py-2.5 px-5"
+            className="hidden xl:flex btn-primary text-sm py-2.5 px-5"
             data-cursor-hover
           >
             Hire Me
@@ -134,10 +134,10 @@ const Navigation = () => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="lg:hidden w-10 h-10 rounded-xl glass flex items-center justify-center text-white"
+            className="xl:hidden w-11 h-11 md:w-10 md:h-10 rounded-xl glass flex items-center justify-center text-white active:scale-95 transition-transform"
             aria-label="Toggle menu"
           >
-            {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+            {isMobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
         </div>
       </nav>
@@ -145,15 +145,15 @@ const Navigation = () => {
       {/* Mobile Menu */}
       <div
         ref={mobileMenuRef}
-        className="fixed inset-0 z-40 glass-strong lg:hidden hidden"
+        className="fixed inset-0 z-40 glass-strong xl:hidden hidden"
         style={{ opacity: 0, y: -20 }}
       >
-        <div className="flex flex-col items-center justify-center h-full gap-6 pt-20">
+        <div className="flex flex-col items-center justify-center h-full gap-4 md:gap-6 pt-16 px-6">
           {navItems.map((item, index) => (
             <button
               key={item.id}
               onClick={() => scrollToSection(item.id)}
-              className={`text-2xl font-semibold transition-colors duration-300 ${
+              className={`text-xl md:text-2xl font-semibold transition-colors duration-300 py-2 ${
                 activeSection === item.id
                   ? 'gradient-text'
                   : 'text-[#94a3b8] hover:text-white'
@@ -165,7 +165,7 @@ const Navigation = () => {
           ))}
           <button
             onClick={() => scrollToSection('contact')}
-            className="btn-primary mt-4"
+            className="btn-primary mt-6 md:mt-8"
           >
             Hire Me
           </button>

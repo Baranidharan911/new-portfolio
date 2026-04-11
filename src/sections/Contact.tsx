@@ -114,7 +114,7 @@ const Contact = ({ onShowToast }: ContactProps) => {
       {/* Background */}
       <div className="absolute inset-0 animated-grid opacity-20" />
       
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
+      <div className="w-full px-4 sm:px-6 lg:px-8 xl:px-12 relative z-10">
         {/* Section Header */}
         <div className="contact-header text-center mb-16">
           <span className="section-tag mb-4">contact</span>
@@ -128,9 +128,9 @@ const Contact = ({ onShowToast }: ContactProps) => {
         </div>
 
         {/* Contact Content */}
-        <div className="contact-content grid lg:grid-cols-5 gap-12">
+        <div className="contact-content grid lg:grid-cols-2 gap-12">
           {/* Left: Contact Info */}
-          <div className="lg:col-span-2 space-y-8">
+          <div className="space-y-8">
             <div>
               <h3 className="text-title mb-6">Get in Touch</h3>
               <p className="text-[#94a3b8] mb-8 leading-relaxed">
@@ -181,7 +181,7 @@ const Contact = ({ onShowToast }: ContactProps) => {
           </div>
 
           {/* Right: Contact Form */}
-          <div className="lg:col-span-3">
+          <div>
             <form onSubmit={handleSubmit} className="p-8 rounded-3xl glass border border-[rgba(99,102,241,0.1)]">
               <div className="grid md:grid-cols-2 gap-6 mb-6">
                 {/* Name */}

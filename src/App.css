@@ -125,6 +125,13 @@ body {
 section {
   position: relative;
   width: 100%;
+  scroll-margin-top: 80px;
+}
+
+@media (max-width: 768px) {
+  section {
+    scroll-margin-top: 60px;
+  }
 }
 
 /* Glassmorphism */

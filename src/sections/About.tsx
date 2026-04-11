@@ -76,20 +76,22 @@ const About = () => {
     { icon: Target, text: 'Problem Solving', desc: 'Complex challenges' },
   ];
 
-  const codeContent = `const developer = {
-  name: 'Baranidharan B',
-  role: 'Full Stack Developer',
-  location: 'Coimbatore, India',
-  experience: 2, // years
-  expertise: [
-    'React.js', 'Node.js', 'GraphQL',
-    'TypeScript', 'PostgreSQL', 'ERPNext'
-  ],
-  currentlyAt: 'Elbrit Life Sciences',
-  building: 'Enterprise Solutions',
-  passion: () => 'Creating impactful tech',
-  hireable: true
-};`;
+  const codeLines = [
+    { num: 1, content: [{ text: 'const', color: 'text-[#c084fc]' }, { text: ' developer', color: 'text-[#60a5fa]' }, { text: ' = {', color: 'text-white' }] },
+    { num: 2, content: [{ text: "  name: '", color: 'text-white' }, { text: 'Baranidharan B', color: 'text-[#4ade80]' }, { text: "',", color: 'text-white' }] },
+    { num: 3, content: [{ text: "  role: '", color: 'text-white' }, { text: 'Full Stack Developer', color: 'text-[#4ade80]' }, { text: "',", color: 'text-white' }] },
+    { num: 4, content: [{ text: "  location: '", color: 'text-white' }, { text: 'Coimbatore, India', color: 'text-[#4ade80]' }, { text: "',", color: 'text-white' }] },
+    { num: 5, content: [{ text: '  experience: ', color: 'text-white' }, { text: '2', color: 'text-[#f472b6]' }, { text: ', ', color: 'text-white' }, { text: '// years', color: 'text-[#64748b]' }] },
+    { num: 6, content: [{ text: '  expertise: [', color: 'text-white' }] },
+    { num: 7, content: [{ text: "    '", color: 'text-white' }, { text: 'React.js', color: 'text-[#4ade80]' }, { text: "', '", color: 'text-white' }, { text: 'Node.js', color: 'text-[#4ade80]' }, { text: "', '", color: 'text-white' }, { text: 'GraphQL', color: 'text-[#4ade80]' }, { text: "',", color: 'text-white' }] },
+    { num: 8, content: [{ text: "    '", color: 'text-white' }, { text: 'TypeScript', color: 'text-[#4ade80]' }, { text: "', '", color: 'text-white' }, { text: 'PostgreSQL', color: 'text-[#4ade80]' }, { text: "', '", color: 'text-white' }, { text: 'ERPNext', color: 'text-[#4ade80]' }, { text: "'", color: 'text-white' }] },
+    { num: 9, content: [{ text: '  ],', color: 'text-white' }] },
+    { num: 10, content: [{ text: '  currentlyAt: ', color: 'text-white' }, { text: "'Elbrit Life Sciences'", color: 'text-[#4ade80]' }, { text: ',', color: 'text-white' }] },
+    { num: 11, content: [{ text: '  building: ', color: 'text-white' }, { text: "'Enterprise Solutions'", color: 'text-[#4ade80]' }, { text: ',', color: 'text-white' }] },
+    { num: 12, content: [{ text: '  passion: () => ', color: 'text-white' }, { text: "'Creating impactful tech'", color: 'text-[#4ade80]' }, { text: ',', color: 'text-white' }] },
+    { num: 13, content: [{ text: '  hireable: ', color: 'text-white' }, { text: 'true', color: 'text-[#f472b6]' }] },
+    { num: 14, content: [{ text: '};', color: 'text-white' }] },
+  ];
 
   return (
     <section
@@ -100,7 +102,7 @@ const About = () => {
       {/* Background Elements */}
       <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-[rgba(99,102,241,0.03)] to-transparent pointer-events-none" />
       
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
+      <div className="w-full px-4 sm:px-6 lg:px-8 xl:px-12 relative z-10">
         {/* Section Header */}
         <div className="about-header text-center mb-16">
           <span className="section-tag mb-4">about</span>
@@ -113,7 +115,7 @@ const About = () => {
         </div>
 
         {/* Main Content Grid */}
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center mb-20">
+        <div className="grid xl:grid-cols-2 gap-12 xl:gap-16 2xl:gap-24 items-center mb-20">
           {/* Left: Text Content */}
           <div className="about-content space-y-6">
             <p className="text-lg text-[#94a3b8] leading-relaxed">
@@ -165,33 +167,30 @@ const About = () => {
               </div>
               
               {/* Code Content */}
-              <div className="p-6 font-mono text-sm overflow-x-auto">
-                <pre className="leading-relaxed">
-                  {codeContent.split('\n').map((line, index) => (
-                    <div key={index} className="flex">
-                      <span className="text-[#64748b] w-8 shrink-0 select-none">{index + 1}</span>
-                      <span dangerouslySetInnerHTML={{ 
-                        __html: line
-                          .replace(/const|let|var/g, '<span class="text-[#c084fc]">$&</span>')
-                          .replace(/'[^']*'/g, '<span class="text-[#4ade80]">$&</span>')
-                          .replace(/"[^"]*"/g, '<span class="text-[#4ade80]">$&</span>')
-                          .replace(/true|false/g, '<span class="text-[#f472b6]">$&</span>')
-                          .replace(/\/\/.*$/gm, '<span class="text-[#64748b]">$&</span>')
-                          .replace(/\b(\d+)\b/g, '<span class="text-[#f472b6]">$&</span>')
-                          .replace(/[{}\[\]]/g, '<span class="text-[#fbbf24]">$&</span>')
-                          .replace(/:/g, '<span class="text-[#60a5fa]">:</span>')
-                          .replace(/,/g, '<span class="text-[#64748b]">,</span>')
-                      }} />
+              <div className="p-4 sm:p-6 font-mono text-xs sm:text-sm overflow-x-auto">
+                <div className="leading-relaxed min-w-[300px]">
+                  {codeLines.map((line) => (
+                    <div key={line.num} className="flex">
+                      <span className="text-[#64748b] w-6 sm:w-8 shrink-0 select-none text-right pr-3">
+                        {line.num}
+                      </span>
+                      <span>
+                        {line.content.map((part, idx) => (
+                          <span key={idx} className={part.color}>
+                            {part.text}
+                          </span>
+                        ))}
+                      </span>
                     </div>
                   ))}
-                </pre>
+                </div>
               </div>
             </div>
           </div>
         </div>
 
         {/* Highlights Grid */}
-        <div className="highlights-grid grid grid-cols-2 md:grid-cols-3 gap-4">
+        <div className="highlights-grid grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
           {highlights.map((item, index) => (
             <div
               key={index}

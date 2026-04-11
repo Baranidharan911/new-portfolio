@@ -116,7 +116,7 @@ const Achievements = () => {
         <div className="absolute bottom-1/4 right-0 w-96 h-96 bg-[rgba(6,182,212,0.03)] rounded-full blur-3xl" />
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
+      <div className="w-full px-4 sm:px-6 lg:px-8 xl:px-12 relative z-10">
         {/* Section Header */}
         <div className="achievements-header text-center mb-16">
           <span className="section-tag mb-4">achievements</span>
