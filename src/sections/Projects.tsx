@@ -5,6 +5,8 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
+type LucideIconComponent = typeof Cpu;
+
 const GITHUB_PROFILE = 'https://github.com/Baranidharan911';
 
 const Projects = () => {
@@ -44,7 +46,7 @@ const Projects = () => {
   ];
 
   const internshipProjects: Array<{
-    icon: React.ComponentType<{ size: number }>;
+    icon: LucideIconComponent;
     title: string;
     subtitle: string;
     description: string;
@@ -144,7 +146,7 @@ const Projects = () => {
 
 /* ── SiteGrip Hero Card ── */
 interface SiteGripFeature {
-  icon: React.ComponentType<{ size: number }>;
+  icon: LucideIconComponent;
   text: string;
 }
 
@@ -308,7 +310,7 @@ const SiteGripCard = ({ features, tech }: { features: SiteGripFeature[]; tech: s
 
 /* ── Internship Project Card ── */
 interface InternshipProject {
-  icon: React.ComponentType<{ size: number }>;
+  icon: LucideIconComponent;
   title: string;
   subtitle: string;
   description: string;

@@ -117,7 +117,7 @@ const Skills = () => {
               key={i}
               className="skill-category group relative p-6 rounded-2xl glass border border-[rgba(99,102,241,0.1)] hover:border-[rgba(99,102,241,0.3)] transition-all duration-500 hover:-translate-y-2"
             >
-              <div className={`absolute inset-0 rounded-2xl bg-gradient-to-r ${skill.color} opacity-0 group-hover:opacity-8 transition-opacity duration-500`} />
+              <div className={`absolute inset-0 rounded-2xl bg-gradient-to-r ${skill.color} opacity-0 group-hover:opacity-[0.08] transition-opacity duration-500`} />
 
               <div className="flex items-start gap-4 mb-4">
                 <div className={`w-12 h-12 rounded-xl bg-gradient-to-r ${skill.color} flex items-center justify-center text-white shrink-0 group-hover:scale-110 transition-transform duration-300`}>

@@ -188,13 +188,21 @@ const Achievements = () => {
                   </p>
 
                   {/* Link */}
-                  <a
-                    href={achievement.link}
-                    className="inline-flex items-center gap-1.5 text-sm font-medium text-[#6366f1] hover:text-[#818cf8] transition-colors"
-                  >
-                    View Credential
-                    <ExternalLink size={14} />
-                  </a>
+                  {achievement.link && achievement.link !== '#' ? (
+                    <a
+                      href={achievement.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 text-sm font-medium text-[#6366f1] hover:text-[#818cf8] transition-colors"
+                    >
+                      View Credential
+                      <ExternalLink size={14} />
+                    </a>
+                  ) : (
+                    <span className="inline-flex items-center gap-1.5 text-xs font-medium text-[#64748b] bg-[rgba(100,116,139,0.08)] border border-[rgba(100,116,139,0.15)] px-2.5 py-1 rounded-full">
+                      Credential Coming Soon
+                    </span>
+                  )}
                 </div>
               </div>
             </div>
