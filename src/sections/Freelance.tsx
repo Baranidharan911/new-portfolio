@@ -12,23 +12,23 @@ const Freelance = () => {
     const ctx = gsap.context(() => {
       gsap.from('.freelance-header', {
         scrollTrigger: { trigger: sectionRef.current, start: 'top 88%', toggleActions: 'play none none none' },
-        opacity: 0, y: 40, duration: 0.8, ease: 'power3.out',
+        immediateRender: false, opacity: 0, y: 40, duration: 0.8, ease: 'power3.out',
       });
       gsap.from('.freelance-main-card', {
         scrollTrigger: { trigger: '.freelance-main-card', start: 'top 92%', toggleActions: 'play none none none' },
-        opacity: 0, y: 50, duration: 0.8, ease: 'power3.out',
+        immediateRender: false, opacity: 0, y: 50, duration: 0.8, ease: 'power3.out',
       });
       gsap.from('.value-card', {
         scrollTrigger: { trigger: '.value-grid', start: 'top 95%', toggleActions: 'play none none none' },
-        opacity: 0, y: 30, stagger: 0.1, duration: 0.6, ease: 'power3.out',
+        immediateRender: false, opacity: 0, y: 30, stagger: 0.1, duration: 0.6, ease: 'power3.out',
       });
       gsap.from('.featured-build', {
         scrollTrigger: { trigger: '.featured-build', start: 'top 95%', toggleActions: 'play none none none' },
-        opacity: 0, y: 40, duration: 0.7, ease: 'power3.out',
+        immediateRender: false, opacity: 0, y: 40, duration: 0.7, ease: 'power3.out',
       });
       gsap.from('.bottom-cta', {
         scrollTrigger: { trigger: '.bottom-cta', start: 'top 95%', toggleActions: 'play none none none' },
-        opacity: 0, y: 30, duration: 0.6, ease: 'power3.out',
+        immediateRender: false, opacity: 0, y: 30, duration: 0.6, ease: 'power3.out',
       });
     }, sectionRef);
 

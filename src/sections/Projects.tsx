@@ -16,17 +16,17 @@ const Projects = () => {
     const ctx = gsap.context(() => {
       gsap.from('.projects-header', {
         scrollTrigger: { trigger: sectionRef.current, start: 'top 88%', toggleActions: 'play none none none' },
-        opacity: 0, y: 40, duration: 0.8, ease: 'power3.out',
+        immediateRender: false, opacity: 0, y: 40, duration: 0.8, ease: 'power3.out',
       });
 
       gsap.from('.sitegrip-card', {
         scrollTrigger: { trigger: '.sitegrip-card', start: 'top 92%', toggleActions: 'play none none none' },
-        opacity: 0, y: 50, duration: 0.9, ease: 'power3.out',
+        immediateRender: false, opacity: 0, y: 50, duration: 0.9, ease: 'power3.out',
       });
 
       gsap.from('.project-card-wrapper', {
         scrollTrigger: { trigger: '.projects-sub-grid', start: 'top 95%', toggleActions: 'play none none none' },
-        opacity: 0, y: 50, stagger: 0.12, duration: 0.8, ease: 'power3.out',
+        immediateRender: false, opacity: 0, y: 50, stagger: 0.12, duration: 0.8, ease: 'power3.out',
       });
     }, sectionRef);
 

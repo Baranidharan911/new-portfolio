@@ -26,11 +26,14 @@ function App() {
   const [toast, setToast] = useState<{ show: boolean; message: string }>({ show: false, message: '' });
 
   useEffect(() => {
+    // Recalculate all ScrollTrigger positions once DOM is ready
+    // so any section already in view (or scrolled past) resolves correctly
+    const earlyRefresh = setTimeout(() => ScrollTrigger.refresh(), 100);
+
     // Simulate loading
     const timer = setTimeout(() => {
       setIsLoading(false);
-      // Recalculate all ScrollTrigger positions after layout settles
-      setTimeout(() => ScrollTrigger.refresh(), 300);
+      setTimeout(() => ScrollTrigger.refresh(), 200);
     }, 2500);
 
     // Scroll progress
@@ -43,6 +46,7 @@ function App() {
     window.addEventListener('scroll', handleScroll, { passive: true });
     
     return () => {
+      clearTimeout(earlyRefresh);
       clearTimeout(timer);
       window.removeEventListener('scroll', handleScroll);
     };

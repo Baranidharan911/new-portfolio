@@ -32,11 +32,11 @@ const Contact = ({ onShowToast }: ContactProps) => {
     const ctx = gsap.context(() => {
       gsap.from('.contact-header', {
         scrollTrigger: { trigger: sectionRef.current, start: 'top 88%', toggleActions: 'play none none none' },
-        opacity: 0, y: 40, duration: 0.8, ease: 'power3.out',
+        immediateRender: false, opacity: 0, y: 40, duration: 0.8, ease: 'power3.out',
       });
       gsap.from('.contact-content', {
         scrollTrigger: { trigger: '.contact-content', start: 'top 92%', toggleActions: 'play none none none' },
-        opacity: 0, y: 50, duration: 0.8, stagger: 0.2, ease: 'power3.out',
+        immediateRender: false, opacity: 0, y: 50, duration: 0.8, stagger: 0.2, ease: 'power3.out',
       });
     }, sectionRef);
     return () => ctx.revert();

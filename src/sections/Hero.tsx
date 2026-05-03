@@ -1,8 +1,7 @@
-import { useEffect, useState, useRef, Suspense, lazy } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { ArrowDown, Github, Linkedin, Mail, Briefcase } from 'lucide-react';
 import gsap from 'gsap';
-
-const HeroScene = lazy(() => import('../components/HeroScene'));
+import HeroScene from '../components/HeroScene';
 
 const Hero = () => {
   const [displayText, setDisplayText] = useState('');
@@ -218,9 +217,7 @@ const Hero = () => {
 
           {/* Right: 3D Scene */}
           <div className="hero-3d lg:col-span-2 h-[380px] lg:h-[520px] hidden lg:block">
-            <Suspense fallback={null}>
-              <HeroScene />
-            </Suspense>
+            <HeroScene />
           </div>
         </div>
       </div>

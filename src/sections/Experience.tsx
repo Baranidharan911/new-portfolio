@@ -17,6 +17,7 @@ const Experience = () => {
           start: 'top 88%',
           toggleActions: 'play none none none',
         },
+        immediateRender: false,
         opacity: 0,
         y: 40,
         duration: 0.8,
@@ -30,6 +31,7 @@ const Experience = () => {
           start: 'top 92%',
           toggleActions: 'play none none none',
         },
+        immediateRender: false,
         opacity: 0,
         x: -50,
         stagger: 0.2,
@@ -45,6 +47,7 @@ const Experience = () => {
           end: 'bottom 80%',
           scrub: 1,
         },
+        immediateRender: false,
         scaleY: 0,
         transformOrigin: 'top',
       });
