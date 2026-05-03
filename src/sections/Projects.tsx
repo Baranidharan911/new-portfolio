@@ -1,97 +1,91 @@
 import { useEffect, useRef, useState } from 'react';
-import { Cpu, ShoppingCart, Building2, ArrowUpRight, Github, ExternalLink } from 'lucide-react';
+import { Cpu, ShoppingCart, Building2, Github, ExternalLink, ArrowUpRight, Zap, Shield, Users, Globe } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
+
+const GITHUB_PROFILE = 'https://github.com/Baranidharan911';
 
 const Projects = () => {
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Header animation
       gsap.from('.projects-header', {
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: 'top 70%',
-          toggleActions: 'play none none reverse',
-        },
-        opacity: 0,
-        y: 40,
-        duration: 0.8,
-        ease: 'power3.out',
+        scrollTrigger: { trigger: sectionRef.current, start: 'top 88%', toggleActions: 'play none none none' },
+        opacity: 0, y: 40, duration: 0.8, ease: 'power3.out',
       });
 
-      // Project cards animation
+      gsap.from('.sitegrip-card', {
+        scrollTrigger: { trigger: '.sitegrip-card', start: 'top 92%', toggleActions: 'play none none none' },
+        opacity: 0, y: 50, duration: 0.9, ease: 'power3.out',
+      });
+
       gsap.from('.project-card-wrapper', {
-        scrollTrigger: {
-          trigger: '.projects-grid',
-          start: 'top 75%',
-          toggleActions: 'play none none reverse',
-        },
-        opacity: 0,
-        y: 60,
-        stagger: 0.15,
-        duration: 0.8,
-        ease: 'power3.out',
+        scrollTrigger: { trigger: '.projects-sub-grid', start: 'top 95%', toggleActions: 'play none none none' },
+        opacity: 0, y: 50, stagger: 0.12, duration: 0.8, ease: 'power3.out',
       });
     }, sectionRef);
 
     return () => ctx.revert();
   }, []);
 
-  const projects: Array<{
+  const siteGripFeatures = [
+    { icon: Zap, text: 'Async job queue with circuit breaker, exponential backoff & dead-letter queue' },
+    { icon: Shield, text: 'SHA-256 idempotency prevents duplicate submissions within 24h windows' },
+    { icon: Users, text: 'Multi-tenant workspaces with weight-based quota distribution across billing tiers' },
+    { icon: Globe, text: 'OAuth load split across 5 GCP projects via consistent hashing to multiply API quota' },
+  ];
+
+  const siteGripTech = [
+    'React', 'TypeScript', 'Node.js', 'Firebase', 'Firestore',
+    'Socket.io', 'GCP', 'App Engine', 'Cloud Build', 'Razorpay', 'OAuth 2.0',
+  ];
+
+  const internshipProjects: Array<{
     icon: React.ComponentType<{ size: number }>;
     title: string;
     subtitle: string;
     description: string;
-    longDescription: string;
     tech: string[];
     features: string[];
-    stats: Record<string, string>;
+    highlight: string;
     color: string;
     gradient: string;
-    links: { demo: string; github: string };
   }> = [
     {
       icon: Cpu,
-      title: 'IoT Device Management Platform',
+      title: 'IoT Device Management',
       subtitle: 'Industrial IoT Solution',
-      description: 'A comprehensive monitoring platform for IoT-enabled RO water filters using MQTT protocol. Features real-time dashboards, device tracking, alert systems, and predictive maintenance capabilities.',
-      longDescription: 'Built an enterprise-grade IoT platform that manages thousands of connected devices, processes millions of data points daily, and provides actionable insights through advanced analytics.',
+      description: 'Real-time monitoring platform for IoT-enabled RO water filters using MQTT protocol. Features live dashboards, device tracking, alert systems and predictive maintenance.',
       tech: ['React', 'Node.js', 'MQTT', 'Firebase', 'Chart.js', 'Socket.io'],
-      features: ['Real-time Monitoring', 'Device Management', 'Alert System', 'Analytics Dashboard'],
-      stats: { users: '500+', devices: '1000+', uptime: '99.9%' },
+      features: ['Real-time Monitoring', 'Device Management', 'Alert System', 'Analytics'],
+      highlight: 'MQTT + Socket.io real-time pipeline',
       color: '#6366f1',
       gradient: 'from-[#6366f1] to-[#8b5cf6]',
-      links: { demo: '#', github: '#' },
     },
     {
       icon: ShoppingCart,
       title: 'E-Commerce Platform',
       subtitle: 'Full-Stack Marketplace',
-      description: 'Full-featured e-commerce solution with authentication, payment integration, order management, and real-time inventory tracking. Supports multiple vendors and advanced analytics.',
-      longDescription: 'Developed a scalable marketplace platform handling thousands of transactions with integrated payment gateways, inventory management, and comprehensive admin dashboards.',
+      description: 'Full-featured marketplace with authentication, Stripe payments, order management, real-time inventory and multi-vendor support.',
       tech: ['React', 'Firebase', 'Stripe', 'Redux', 'Tailwind CSS', 'Node.js'],
-      features: ['Payment Integration', 'Real-time Inventory', 'Multi-vendor Support', 'Admin Dashboard'],
-      stats: { orders: '10K+', vendors: '50+', conversion: '4.5%' },
+      features: ['Stripe Payments', 'Real-time Inventory', 'Multi-vendor', 'Admin Panel'],
+      highlight: 'Stripe + Firebase real-time sync',
       color: '#06b6d4',
       gradient: 'from-[#06b6d4] to-[#6366f1]',
-      links: { demo: '#', github: '#' },
     },
     {
       icon: Building2,
-      title: 'Hostel Management System',
+      title: 'Hostel Management ERP',
       subtitle: 'Educational Institution ERP',
-      description: 'Real-time admin dashboard improving operational efficiency by 30%. Includes room allocation, fee management, student tracking, and comprehensive reporting modules.',
-      longDescription: 'Architected a complete hostel management solution that streamlined operations, reduced manual work, and improved student satisfaction through digital transformation.',
+      description: 'Full ERP system for hostel administration — room allocation, fee management, student portal and comprehensive reporting. Improved operational efficiency by 30%.',
       tech: ['React', 'Node.js', 'MongoDB', 'Express', 'JWT', 'Material-UI'],
-      features: ['Room Allocation', 'Fee Management', 'Student Portal', 'Reports & Analytics'],
-      stats: { students: '2000+', efficiency: '+30%', satisfaction: '95%' },
+      features: ['Room Allocation', 'Fee Management', 'Student Portal', 'Reports'],
+      highlight: 'MERN stack, +30% efficiency',
       color: '#22c55e',
       gradient: 'from-[#22c55e] to-[#06b6d4]',
-      links: { demo: '#', github: '#' },
     },
   ];
 
@@ -101,59 +95,231 @@ const Projects = () => {
       id="projects"
       className="w-full py-24 lg:py-32 bg-[#12121a] relative overflow-hidden"
     >
-      {/* Background */}
       <div className="absolute inset-0 animated-grid opacity-20" />
-      
+
       <div className="w-full px-4 sm:px-6 lg:px-8 xl:px-12 relative z-10">
-        {/* Section Header */}
-        <div className="projects-header text-center mb-16">
+        {/* Header */}
+        <div className="projects-header text-center mb-14">
           <span className="section-tag mb-4">projects</span>
-          <h2 className="text-headline mt-4 mb-6">
-            Featured <span className="gradient-text">Projects</span>
+          <h2 className="text-headline mt-4 mb-5">
+            Featured <span className="gradient-text">Work</span>
           </h2>
           <p className="text-body text-[#94a3b8] max-w-2xl mx-auto">
-            Some of my recent work that showcases my skills and experience in building 
-            production-ready applications
+            From a live SaaS platform to internship projects — real code, real problems, real outcomes.
           </p>
         </div>
 
-        {/* Projects Grid */}
-        <div className="projects-grid grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-3 gap-6 xl:gap-8">
-          {projects.map((project, index) => (
-            <ProjectCard key={index} project={project} />
-          ))}
+        {/* SiteGrip Hero Card */}
+        <SiteGripCard features={siteGripFeatures} tech={siteGripTech} />
+
+        {/* Internship Projects Grid */}
+        <div className="mt-8">
+          <p className="text-xs font-mono text-[#64748b] uppercase tracking-widest mb-6 text-center">
+            Internship Projects — Protowiz Pvt Ltd
+          </p>
+          <div className="projects-sub-grid grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {internshipProjects.map((project, i) => (
+              <ProjectCard key={i} project={project} />
+            ))}
+          </div>
         </div>
 
-        {/* View All CTA */}
-        <div className="text-center mt-16">
-          <button className="btn-secondary group">
-            <span>View All Projects</span>
-            <ArrowUpRight size={18} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-          </button>
+        {/* GitHub CTA */}
+        <div className="text-center mt-14">
+          <a
+            href={GITHUB_PROFILE}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-secondary group"
+          >
+            <Github size={18} />
+            <span>View All 20+ Projects on GitHub</span>
+            <ArrowUpRight size={16} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+          </a>
         </div>
       </div>
     </section>
   );
 };
 
-// Individual Project Card Component with 3D Tilt
-interface ProjectCardProps {
-  project: {
-    icon: React.ComponentType<{ size: number }>;
-    title: string;
-    subtitle: string;
-    description: string;
-    longDescription: string;
-    tech: string[];
-    features: string[];
-    stats: { [key: string]: string };
-    color: string;
-    gradient: string;
-    links: { demo: string; github: string };
-  };
+/* ── SiteGrip Hero Card ── */
+interface SiteGripFeature {
+  icon: React.ComponentType<{ size: number }>;
+  text: string;
 }
 
-const ProjectCard = ({ project }: ProjectCardProps) => {
+const SiteGripCard = ({ features, tech }: { features: SiteGripFeature[]; tech: string[] }) => {
+  const [hovered, setHovered] = useState(false);
+
+  return (
+    <div
+      className="sitegrip-card relative rounded-3xl overflow-hidden border transition-all duration-500"
+      style={{
+        background: 'rgba(16,16,28,0.9)',
+        borderColor: hovered ? 'rgba(245,158,11,0.45)' : 'rgba(245,158,11,0.18)',
+        boxShadow: hovered ? '0 0 60px rgba(245,158,11,0.12), 0 30px 60px rgba(0,0,0,0.4)' : '0 20px 50px rgba(0,0,0,0.3)',
+      }}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+    >
+      {/* Top gradient bar */}
+      <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#f59e0b] via-[#fbbf24] to-[#f97316]" />
+
+      {/* Ambient glow */}
+      <div
+        className="absolute inset-0 opacity-0 transition-opacity duration-500 pointer-events-none"
+        style={{
+          opacity: hovered ? 1 : 0,
+          background: 'radial-gradient(ellipse at 30% 40%, rgba(245,158,11,0.06) 0%, transparent 60%)',
+        }}
+      />
+
+      <div className="p-7 sm:p-9 lg:p-10">
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-14">
+
+          {/* Left */}
+          <div>
+            {/* Badges */}
+            <div className="flex flex-wrap items-center gap-3 mb-6">
+              <span className="flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold bg-[rgba(245,158,11,0.12)] text-[#f59e0b] border border-[rgba(245,158,11,0.2)]">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#f59e0b] opacity-75" />
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-[#f59e0b]" />
+                </span>
+                Live SaaS Product
+              </span>
+              <span className="px-3 py-1.5 rounded-full text-xs font-mono bg-[rgba(99,102,241,0.1)] text-[#818cf8] border border-[rgba(99,102,241,0.2)]">
+                Built Solo — Design to Deployment
+              </span>
+            </div>
+
+            <h3 className="text-3xl lg:text-4xl font-bold text-white mb-2">SiteGrip</h3>
+            <p className="text-[#f59e0b] font-mono text-sm mb-5">
+              AI-Powered Search Indexing & Visibility Platform
+            </p>
+
+            <p className="text-[#94a3b8] text-[15px] leading-relaxed mb-7">
+              A production multi-tenant SaaS that cuts URL indexing time from <span className="text-white font-medium">days to hours</span>.
+              Handles Google Indexing API, Bing IndexNow, Google Search Console OAuth, subscription billing with
+              Razorpay, and AI search engine submission — all with a real-time operator dashboard.
+            </p>
+
+            {/* Architecture bullets */}
+            <div className="space-y-4 mb-8">
+              {features.map((f, i) => (
+                <div key={i} className="flex items-start gap-3">
+                  <div className="w-8 h-8 rounded-lg bg-[rgba(245,158,11,0.12)] flex items-center justify-center shrink-0 mt-0.5">
+                    <f.icon size={15} className="text-[#f59e0b]" />
+                  </div>
+                  <p className="text-sm text-[#94a3b8] leading-relaxed">{f.text}</p>
+                </div>
+              ))}
+            </div>
+
+            {/* CTAs */}
+            <div className="flex flex-wrap gap-3">
+              <a
+                href="https://www.sitegrip.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold text-black transition-all duration-300 hover:opacity-90 hover:-translate-y-0.5"
+                style={{ background: 'linear-gradient(135deg, #f59e0b, #f97316)' }}
+              >
+                <ExternalLink size={15} />
+                Visit SiteGrip
+              </a>
+              <a
+                href={GITHUB_PROFILE}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-medium glass text-[#94a3b8] hover:text-white hover:border-[rgba(245,158,11,0.4)] transition-all duration-300"
+              >
+                <Github size={15} />
+                GitHub (Private)
+              </a>
+            </div>
+          </div>
+
+          {/* Right: Stats + Tech */}
+          <div className="flex flex-col gap-6">
+            {/* Stats grid */}
+            <div className="grid grid-cols-2 gap-4">
+              {[
+                { label: 'Billing Tiers', value: '3', sub: 'Starter · Growth · Agency' },
+                { label: 'Architecture', value: '5', sub: 'GCP OAuth projects' },
+                { label: 'Retry Logic', value: '3×', sub: 'Exponential backoff' },
+                { label: 'Search Engines', value: '4', sub: 'Google · Bing · AI engines' },
+              ].map((s, i) => (
+                <div
+                  key={i}
+                  className="p-5 rounded-2xl border transition-all duration-300"
+                  style={{
+                    background: 'rgba(22,22,34,0.6)',
+                    borderColor: 'rgba(245,158,11,0.12)',
+                  }}
+                >
+                  <div className="text-2xl font-bold text-[#f59e0b] mb-1">{s.value}</div>
+                  <div className="text-sm font-semibold text-white mb-1">{s.label}</div>
+                  <div className="text-xs text-[#64748b] font-mono">{s.sub}</div>
+                </div>
+              ))}
+            </div>
+
+            {/* Tech stack */}
+            <div className="p-6 rounded-2xl border" style={{ background: 'rgba(22,22,34,0.6)', borderColor: 'rgba(245,158,11,0.12)' }}>
+              <p className="text-xs font-mono text-[#64748b] uppercase tracking-wider mb-4">Tech Stack</p>
+              <div className="flex flex-wrap gap-2">
+                {tech.map((t, i) => (
+                  <span
+                    key={i}
+                    className="px-3 py-1.5 text-xs font-mono rounded-lg border text-[#94a3b8] transition-colors duration-300"
+                    style={{ background: 'rgba(245,158,11,0.06)', borderColor: 'rgba(245,158,11,0.15)' }}
+                  >
+                    {t}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {/* Key capabilities */}
+            <div className="p-5 rounded-2xl border" style={{ background: 'rgba(22,22,34,0.6)', borderColor: 'rgba(245,158,11,0.12)' }}>
+              <p className="text-xs font-mono text-[#64748b] uppercase tracking-wider mb-3">Key Capabilities</p>
+              <div className="space-y-2">
+                {[
+                  'Append-only quota ledger for full audit history',
+                  'Dual-layer caching (in-memory + localStorage fallback)',
+                  'CI/CD via Cloud Build → App Engine auto-scaling',
+                  'Real-time quota updates via Socket.io',
+                  'Free public tools: PageSpeed, sitemap gen, broken links',
+                ].map((cap, i) => (
+                  <div key={i} className="flex items-start gap-2 text-xs text-[#94a3b8]">
+                    <span className="text-[#f59e0b] mt-0.5 shrink-0">›</span>
+                    {cap}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+/* ── Internship Project Card ── */
+interface InternshipProject {
+  icon: React.ComponentType<{ size: number }>;
+  title: string;
+  subtitle: string;
+  description: string;
+  tech: string[];
+  features: string[];
+  highlight: string;
+  color: string;
+  gradient: string;
+}
+
+const ProjectCard = ({ project }: { project: InternshipProject }) => {
   const cardRef = useRef<HTMLDivElement>(null);
   const [transform, setTransform] = useState({ rotateX: 0, rotateY: 0 });
   const [isHovered, setIsHovered] = useState(false);
@@ -163,126 +329,76 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
     const rect = cardRef.current.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
-    const rotateX = (y - centerY) / 20;
-    const rotateY = (centerX - x) / 20;
-    setTransform({ rotateX, rotateY });
-  };
-
-  const handleMouseLeave = () => {
-    setTransform({ rotateX: 0, rotateY: 0 });
-    setIsHovered(false);
+    setTransform({
+      rotateX: (y - rect.height / 2) / 18,
+      rotateY: (rect.width / 2 - x) / 18,
+    });
   };
 
   return (
     <div className="project-card-wrapper" style={{ perspective: '1000px' }}>
       <div
         ref={cardRef}
-        className="group relative h-full rounded-3xl overflow-hidden transition-all duration-300"
+        className="group relative h-full rounded-2xl overflow-hidden transition-all duration-300"
         style={{
           transform: `perspective(1000px) rotateX(${transform.rotateX}deg) rotateY(${transform.rotateY}deg) ${isHovered ? 'scale(1.02)' : 'scale(1)'}`,
           transformStyle: 'preserve-3d',
         }}
         onMouseMove={handleMouseMove}
         onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={handleMouseLeave}
+        onMouseLeave={() => { setTransform({ rotateX: 0, rotateY: 0 }); setIsHovered(false); }}
       >
-        {/* Card Background */}
         <div className="absolute inset-0 glass border border-[rgba(99,102,241,0.1)] group-hover:border-[rgba(99,102,241,0.3)] transition-colors duration-500" />
-        
-        {/* Gradient Glow */}
-        <div 
-          className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-          style={{
-            background: `radial-gradient(600px circle at ${50 + transform.rotateY * 2}% ${50 + transform.rotateX * 2}%, ${project.color}15, transparent 40%)`
-          }}
+        <div
+          className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+          style={{ background: `radial-gradient(600px circle at ${50 + transform.rotateY * 2}% ${50 + transform.rotateX * 2}%, ${project.color}12, transparent 40%)` }}
         />
 
-        {/* Content */}
         <div className="relative p-6 flex flex-col h-full">
-          {/* Header Image Area */}
-          <div className={`relative h-48 rounded-2xl bg-gradient-to-r ${project.gradient} mb-6 overflow-hidden`}>
-            {/* Background Pattern */}
-            <div className="absolute inset-0 opacity-20">
-              <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_40%,rgba(255,255,255,0.1)_50%,transparent_60%)] translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
-            </div>
-            
-            {/* Icon */}
+          {/* Header */}
+          <div className={`relative h-40 rounded-xl bg-gradient-to-r ${project.gradient} mb-5 overflow-hidden`}>
+            <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_40%,rgba(255,255,255,0.08)_50%,transparent_60%)] translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
             <div className="absolute inset-0 flex items-center justify-center">
-              <div className="w-20 h-20 rounded-2xl bg-white/20 backdrop-blur-lg flex items-center justify-center text-white transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
-                <project.icon size={36} />
+              <div className="w-16 h-16 rounded-xl bg-white/20 backdrop-blur-lg flex items-center justify-center text-white group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
+                <project.icon size={30} />
               </div>
             </div>
-
-            {/* Stats Badge */}
-            <div className="absolute bottom-4 left-4 flex gap-2">
-              {Object.entries(project.stats).slice(0, 2).map(([key, value], idx) => (
-                <span 
-                  key={idx}
-                  className="px-2 py-1 rounded-lg bg-black/30 backdrop-blur-sm text-xs text-white font-mono"
-                >
-                  {value} {key}
-                </span>
-              ))}
+            <div className="absolute bottom-3 left-3">
+              <span className="px-2 py-1 rounded-md bg-black/30 backdrop-blur-sm text-xs text-white/80 font-mono">
+                {project.highlight}
+              </span>
             </div>
           </div>
 
-          {/* Text Content */}
           <div className="flex-1">
-            <span className="text-xs font-mono text-[#64748b] uppercase tracking-wider">
-              {project.subtitle}
-            </span>
-            <h3 className="text-xl font-bold text-white mt-1 mb-3 group-hover:gradient-text transition-all duration-300">
-              {project.title}
-            </h3>
-            <p className="text-sm text-[#94a3b8] leading-relaxed mb-4">
-              {project.description}
-            </p>
+            <span className="text-xs font-mono text-[#64748b] uppercase tracking-wider">{project.subtitle}</span>
+            <h3 className="text-lg font-bold text-white mt-1 mb-2">{project.title}</h3>
+            <p className="text-sm text-[#94a3b8] leading-relaxed mb-4">{project.description}</p>
 
-            {/* Features */}
-            <div className="flex flex-wrap gap-2 mb-4">
-              {project.features.slice(0, 3).map((feature, idx) => (
-                <span
-                  key={idx}
-                  className="px-2 py-1 text-xs rounded-md bg-[rgba(99,102,241,0.08)] text-[#94a3b8]"
-                >
-                  {feature}
-                </span>
+            <div className="flex flex-wrap gap-1.5 mb-3">
+              {project.features.map((f, i) => (
+                <span key={i} className="px-2 py-1 text-xs rounded-md bg-[rgba(99,102,241,0.07)] text-[#94a3b8]">{f}</span>
               ))}
             </div>
           </div>
 
-          {/* Footer */}
-          <div className="pt-4 border-t border-[rgba(99,102,241,0.1)]">
-            {/* Tech Stack */}
-            <div className="flex flex-wrap gap-2 mb-4">
-              {project.tech.slice(0, 4).map((tech, idx) => (
-                <span
-                  key={idx}
-                  className="text-xs text-[#64748b] font-mono"
-                >
-                  {tech}{idx < Math.min(project.tech.length, 4) - 1 ? ',' : ''}
+          <div className="pt-4 border-t border-[rgba(99,102,241,0.08)]">
+            <div className="flex flex-wrap gap-x-2 gap-y-1 mb-4">
+              {project.tech.slice(0, 5).map((t, i) => (
+                <span key={i} className="text-xs text-[#64748b] font-mono">
+                  {t}{i < Math.min(project.tech.length, 5) - 1 ? '·' : ''}
                 </span>
               ))}
             </div>
-
-            {/* Action Buttons */}
-            <div className="flex gap-3">
-              <a
-                href={project.links.demo}
-                className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl bg-gradient-to-r from-[#6366f1] to-[#06b6d4] text-white text-sm font-medium hover:opacity-90 transition-opacity"
-              >
-                <ExternalLink size={14} />
-                Live Demo
-              </a>
-              <a
-                href={project.links.github}
-                className="w-10 h-10 flex items-center justify-center rounded-xl glass text-[#94a3b8] hover:text-white hover:border-[#6366f1] transition-all"
-              >
-                <Github size={18} />
-              </a>
-            </div>
+            <a
+              href={GITHUB_PROFILE}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center gap-2 w-full py-2.5 rounded-xl glass text-[#94a3b8] hover:text-white hover:border-[#6366f1] text-sm font-medium transition-all duration-300"
+            >
+              <Github size={15} />
+              View on GitHub
+            </a>
           </div>
         </div>
       </div>

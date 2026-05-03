@@ -14,8 +14,8 @@ const Achievements = () => {
       gsap.from('.achievements-header', {
         scrollTrigger: {
           trigger: sectionRef.current,
-          start: 'top 70%',
-          toggleActions: 'play none none reverse',
+          start: 'top 88%',
+          toggleActions: 'play none none none',
         },
         opacity: 0,
         y: 40,
@@ -27,8 +27,8 @@ const Achievements = () => {
       gsap.from('.achievement-card', {
         scrollTrigger: {
           trigger: '.achievements-grid',
-          start: 'top 75%',
-          toggleActions: 'play none none reverse',
+          start: 'top 92%',
+          toggleActions: 'play none none none',
         },
         opacity: 0,
         y: 40,
@@ -41,8 +41,8 @@ const Achievements = () => {
       gsap.from('.stat-item', {
         scrollTrigger: {
           trigger: '.stats-row',
-          start: 'top 85%',
-          toggleActions: 'play none none reverse',
+          start: 'top 95%',
+          toggleActions: 'play none none none',
         },
         opacity: 0,
         y: 20,
@@ -108,7 +108,7 @@ const Achievements = () => {
     <section
       ref={sectionRef}
       id="achievements"
-      className="w-full py-24 lg:py-32 relative overflow-hidden"
+      className="w-full py-24 lg:py-32 bg-[#12121a] relative overflow-hidden"
     >
       {/* Background Elements */}
       <div className="absolute inset-0">

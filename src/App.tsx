@@ -1,4 +1,8 @@
 import { useState, useEffect } from 'react';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import gsap from 'gsap';
+
+gsap.registerPlugin(ScrollTrigger);
 import ParticleBackground from './sections/ParticleBackground';
 import Loader from './sections/Loader';
 import Navigation from './sections/Navigation';
@@ -25,6 +29,8 @@ function App() {
     // Simulate loading
     const timer = setTimeout(() => {
       setIsLoading(false);
+      // Recalculate all ScrollTrigger positions after layout settles
+      setTimeout(() => ScrollTrigger.refresh(), 300);
     }, 2500);
 
     // Scroll progress

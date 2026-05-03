@@ -14,8 +14,8 @@ const Experience = () => {
       gsap.from('.experience-header', {
         scrollTrigger: {
           trigger: sectionRef.current,
-          start: 'top 70%',
-          toggleActions: 'play none none reverse',
+          start: 'top 88%',
+          toggleActions: 'play none none none',
         },
         opacity: 0,
         y: 40,
@@ -27,8 +27,8 @@ const Experience = () => {
       gsap.from('.timeline-item', {
         scrollTrigger: {
           trigger: '.timeline-container',
-          start: 'top 75%',
-          toggleActions: 'play none none reverse',
+          start: 'top 92%',
+          toggleActions: 'play none none none',
         },
         opacity: 0,
         x: -50,
@@ -41,7 +41,7 @@ const Experience = () => {
       gsap.from('.timeline-line-progress', {
         scrollTrigger: {
           trigger: '.timeline-container',
-          start: 'top 60%',
+          start: 'top 85%',
           end: 'bottom 80%',
           scrub: 1,
         },

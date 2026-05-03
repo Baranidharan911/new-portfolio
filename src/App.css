@@ -1,5 +1,5 @@
-/* Premium Portfolio Styles - Top Tier Developer Grade */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap');
+/* Portfolio Styles */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&family=Sora:wght@700;800&display=swap');
 
 :root {
   /* Premium Color Palette */
@@ -55,7 +55,7 @@ html {
 }
 
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: 'Inter', 'Sora', -apple-system, BlinkMacSystemFont, sans-serif;
   background: var(--bg-primary);
   color: var(--text-primary);
   line-height: 1.6;
@@ -351,8 +351,8 @@ section {
 .text-display {
   font-size: clamp(3rem, 8vw, 7rem);
   font-weight: 800;
-  line-height: 1.1;
-  letter-spacing: -0.03em;
+  line-height: 1.05;
+  letter-spacing: -0.035em;
 }
 
 .text-headline {
@@ -614,4 +614,55 @@ section {
   .no-print {
     display: none !important;
   }
+}
+
+/* SiteGrip card amber glow pulse */
+@keyframes amberPulse {
+  0%, 100% { box-shadow: 0 0 30px rgba(245,158,11,0.12), 0 20px 50px rgba(0,0,0,0.3); }
+  50% { box-shadow: 0 0 50px rgba(245,158,11,0.22), 0 30px 60px rgba(0,0,0,0.4); }
+}
+
+.amber-pulse {
+  animation: amberPulse 3s ease-in-out infinite;
+}
+
+/* Orbit ring animation */
+@keyframes orbit {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Gradient border animation */
+@keyframes borderRotate {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Text gradient animation */
+.gradient-text-animated {
+  background: linear-gradient(90deg, #6366f1, #06b6d4, #8b5cf6, #6366f1);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: borderRotate 4s linear infinite;
+}
+
+/* Enhanced glassmorphism for hero */
+.glass-hero {
+  background: rgba(10, 10, 20, 0.6);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(99, 102, 241, 0.15);
+}
+
+/* Hover glow card */
+.hover-glow {
+  transition: box-shadow var(--transition-medium), transform var(--transition-fast);
+}
+
+.hover-glow:hover {
+  box-shadow: 0 0 0 1px rgba(99,102,241,0.3), 0 20px 40px rgba(0,0,0,0.4), 0 0 30px rgba(99,102,241,0.1);
+  transform: translateY(-4px);
 }
